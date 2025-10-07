@@ -30,7 +30,7 @@ const legends = [
   { name: 'Fuse', image: Fuse_copy },
   { name: 'Ash', image: Ash_copy },
   { name: 'MadMaggie', image: Mad_Maggie_copy },
-  { name: 'Balistic', image: Balistic_copy },
+  { name: 'Balistic',  image: Balistic_copy },
   { name: 'Pathfinder', image: Pathfinder_copy },
   { name: 'Wraith', image: Wraith_copy },
   { name: 'Octane', image: Octane_copy },
@@ -80,83 +80,5 @@ const LegendPicker = () => {
     </div>
   );
 };
-  // return (
-  //   <div id='legendPicker'>
-  //     <button onClick={handleLegendChange} value='Bangalore'>
-  //       <img src={Bangalore_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Fuse'>
-  //       <img src={Fuse_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Ash'>
-  //       <img src={Ash_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='MadMaggie'>
-  //       <img src={Mad_Maggie_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Balistic'>
-  //       <img src={Balistic_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Pathfinder'>
-  //       <img src={Pathfinder_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Wraith'>
-  //       <img src={Wraith_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Octane'>
-  //       <img src={Octane_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Revanent'>
-  //       <img src={Revanent_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Horizon'>
-  //       <img src={Horizon_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Bloodhound'>
-  //       <img src={Bloodhound_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Crypto'>
-  //       <img src={Crypto_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Valkeryie'>
-  //       <img src={Valkeryie_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Seer'>
-  //       <img src={Seer_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Vantage'>
-  //       <img src={Vantage_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Gibralter'>
-  //       <img src={Gibralter_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Lifeline'>
-  //       <img src={Lifeline_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Mirage'>
-  //       <img src={Mirage_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='loba'>
-  //       <img src={loba_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='NewCastle'>
-  //       <img src={NewCastle_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Conduit'>
-  //       <img src={Conduit_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Caustic'>
-  //       <img src={Caustic_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Wattson'>
-  //       <img src={Wattson_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Rampart'>
-  //       <img src={Rampart_copy} width='50px' />
-  //     </button>
-  //     <button onClick={handleLegendChange} value='Catalyst'>
-  //       <img src={Catalyst_copy} width='50px' />
-  //     </button>
-  //   </div>
-  // );
+
 export default LegendPicker;

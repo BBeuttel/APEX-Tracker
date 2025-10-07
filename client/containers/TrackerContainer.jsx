@@ -1,5 +1,5 @@
 import PlayerSearchContainer from './PlayerSearchContainer.jsx';
-// import PlayerStatContainer from './PlayerStatContainer.jsx'
+import PlayerStatContainer from './PlayerStatContainer.jsx';
 // import ComparisonContainer from './ComparisonContainer.jsx'
 import { useState } from 'react';
 import Ash_copy from '../Assets/copies/Ash_copy.png';
@@ -29,36 +29,40 @@ import Wattson_copy from '../Assets/copies/Wattson_copy.png';
 import Wraith_copy from '../Assets/copies/Wraith_copy.png';
 
 const legends = [
-  { name: 'Bangalore', image: Bangalore_copy },
-  { name: 'Fuse', image: Fuse_copy },
-  { name: 'Ash', image: Ash_copy },
-  { name: 'MadMaggie', image: Mad_Maggie_copy },
-  { name: 'Balistic', image: Balistic_copy },
-  { name: 'Pathfinder', image: Pathfinder_copy },
-  { name: 'Wraith', image: Wraith_copy },
-  { name: 'Octane', image: Octane_copy },
-  { name: 'Revanent', image: Revanent_copy },
-  { name: 'Horizon', image: Horizon_copy },
-  { name: 'Bloodhound', image: Bloodhound_copy },
-  { name: 'Crypto', image: Crypto_copy },
-  { name: 'Valkeryie', image: Valkeryie_copy },
-  { name: 'Seer', image: Seer_copy },
-  { name: 'Vantage', image: Vantage_copy },
-  { name: 'Gibralter', image: Gibralter_copy },
-  { name: 'Lifeline', image: Lifeline_copy },
-  { name: 'Mirage', image: Mirage_copy },
-  { name: 'Loba', image: loba_copy },
-  { name: 'NewCastle', image: NewCastle_copy },
-  { name: 'Conduit', image: Conduit_copy },
-  { name: 'Caustic', image: Caustic_copy },
-  { name: 'Wattson', image: Wattson_copy },
-  { name: 'Rampart', image: Rampart_copy },
-  { name: 'Catalyst', image: Catalyst_copy },
+  { name: 'Bangalore', class: 'Assalt', image: Bangalore_copy },
+  { name: 'Fuse', class: 'Assalt', image: Fuse_copy },
+  { name: 'Ash', class: 'Assalt', image: Ash_copy },
+  { name: 'MadMaggie', class: 'Assalt', image: Mad_Maggie_copy },
+  { name: 'Balistic', class: 'Assalt', image: Balistic_copy },
+  { name: 'Pathfinder', class: 'Skirmisher', image: Pathfinder_copy },
+  { name: 'Wraith', class: 'Skirmisher', image: Wraith_copy },
+  { name: 'Octane', class: 'Skirmisher', image: Octane_copy },
+  { name: 'Revanent', class: 'Skirmisher', image: Revanent_copy },
+  { name: 'Horizon', class: 'Skirmisher', image: Horizon_copy },
+  { name: 'Bloodhound', class: 'Recon', image: Bloodhound_copy },
+  { name: 'Crypto', class: 'Recon', image: Crypto_copy },
+  { name: 'Valkeryie', class: 'Recon', image: Valkeryie_copy },
+  { name: 'Seer', class: 'Recon', image: Seer_copy },
+  { name: 'Vantage', class: 'Recon', image: Vantage_copy },
+  { name: 'Gibralter', class: 'Support', image: Gibralter_copy },
+  { name: 'Lifeline', class: 'Support', image: Lifeline_copy },
+  { name: 'Mirage', class: 'Support', image: Mirage_copy },
+  { name: 'Loba', class: 'Support', image: loba_copy },
+  { name: 'NewCastle', class: 'Support', image: NewCastle_copy },
+  { name: 'Conduit', class: 'Support', image: Conduit_copy },
+  { name: 'Caustic', class: 'Controller', image: Caustic_copy },
+  { name: 'Wattson', class: 'Controller', image: Wattson_copy },
+  { name: 'Rampart', class: 'Controller', image: Rampart_copy },
+  { name: 'Catalyst', class: 'Controller', image: Catalyst_copy },
 ];
 
 const TrackerContainer = () => {
   const [pickedLegend, setPickedLegend] = useState('');
-
+  const [playerStatContainer, setPlayerStatContainer] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [legendStats, setLegendStats] = useState(null);
+ 
+console.log(legendStats)
   const handleLegendChange = (event) => {
     setPickedLegend(event);
   };
@@ -77,8 +81,19 @@ const TrackerContainer = () => {
             <img src={legend.image} alt={legend.name} width='75px' />
           </button>
         ))}
-        <PlayerSearchContainer pickedLegend={pickedLegend} />
-        {/* <PlayerStatContainer /> */}
+        <PlayerSearchContainer
+          pickedLegend={pickedLegend}
+          setPlayerStatContainer={setPlayerStatContainer}
+          setLegendStats={setLegendStats}
+          setUserName={setUserName}
+          userName={userName}
+        />
+              {playerStatContainer && (
+                <PlayerStatContainer
+                  // legendStats={legendStats}
+                  // userName={userName}
+                  // pickedLegend={pickedLegend}
+                />)}
       </div>
     </div>
   );

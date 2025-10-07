@@ -1,64 +1,39 @@
-//there should be two empty forms for player tag and platform
-//within the text boxes text telling the client what to type in
-//specifiy that PC for PC, PS4 for PS4 or PS5 or X1 for Xbox
+import { useState } from 'react';
 
-//Have a submit button
-//need to have the inputs be put into fetch request url replacing
-//the section where playerID and platform are
-import { useState, useEffect } from 'react';
-//import PlayerStatContainer from './PlayerStatContainer';
-// import { useEffect } from 'react';
 
-const PlayerSearchContainer = ({ pickedLegend }) => {
+const PlayerSearchContainer = ({ pickedLegend, setPlayerStatContainer, setUserName, userName, setLegendStats }) => {
   const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [userName, setUserName] = useState('');
-  const [legendStats, setLegendStats] = useState('');
 
+  console.log('[PlayerSearchContainer] pickedLegend:', pickedLegend);
+  console.log(
+    '[PlayerSearchContainer] setPlayerStatContainer is function:',
+    typeof setPlayerStatContainer === 'function'
+  );
 
   const handleUserNameChange = (event) => {
     setUserName(event.target.value);
   };
+
   const handlePlatformChange = (event) => {
     setSelectedPlatform(event.target.value);
   };
 
-  const fetchRequest = () => {
-    fetch('http://localhost:3000/api/player-info', {
-      method: 'POST',
-      body: JSON.stringify({ userName, selectedPlatform }),
-      headers: { 'Content-Type': 'application/json' },
-      mode: 'cors',
-    })
-      .then((response) => {
-        //console.log(response)
-        return response.json();
-      })
-      .then((data) => {
-        setLegendStats(data);
+  const fetchRequest = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/player-info', {
+        method: 'POST',
+        body: JSON.stringify({ userName, selectedPlatform }),
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
       });
-  };
-
-  
-  useEffect(() => {
-    if (!legendStats) {
-      console.log("Legend stats are not available yet.");
-      return;
+      const data = await response.json();
+      setLegendStats(data);
+      console.log('Fetched data: ', data);
+      setPlayerStatContainer(true);
+    } catch (e) {
+      console.error('Error: ', e);
     }
-    const info = {
-      userName: userName,
-      legend: pickedLegend,
-      stats: legendStats.legends.all[pickedLegend]?.data
-      // brKills: legendStats.legends.all[pickedLegend]?.data[0].value,
-      // killsGlobalRank:
-      //   legendStats.legends.all[pickedLegend]?.data[0].rank.topPercent,
-      // brDamage: legendStats.legends.all[pickedLegend]?.data[1].value,
-      // damageGlobalRank:
-      //   legendStats.legends.all[pickedLegend]?.data[1].rank.topPercent,
-    };
-    console.log(info)
-  
-    
-  }, [selectedPlatform, userName, legendStats, pickedLegend]);
+  };
 
   return (
     <div id='PlayerSearchContainer'>
@@ -80,7 +55,6 @@ const PlayerSearchContainer = ({ pickedLegend }) => {
         <option value='X1'>XBox</option>
       </select>
       <button onClick={fetchRequest}>Submit</button>
-      {/* <PlayerStatContainer legendStats={legendStats} userName={userName} pickedLegend={pickedLegend}/> */}
     </div>
   );
 };
